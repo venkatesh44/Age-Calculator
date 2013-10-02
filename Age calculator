@@ -1,0 +1,435 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.*;
+public class AgeCalculator
+{
+public static void main(String agrs[])
+{
+EventQueue.invokeLater(new Runnable()
+	{
+		public void run()
+		{
+		TextComponentFrame frame = new TextComponentFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.setTitle("Age Calculator");
+		frame.setSize(800,450);
+
+		}
+	});
+}
+}
+	
+class TextComponentFrame extends JFrame
+{
+public TextComponentFrame()
+{			
+
+			
+			  Font f;
+        f = new Font("SansSerif", Font.BOLD, 35);
+		 Font font = new Font("SansSerif", Font.BOLD, 15);
+		JLabel label1= new JLabel("Age Calculator");
+		label1.setFont(f);
+			
+		
+		JLabel label2= new JLabel("Enter your BirthDate");
+		label2.setBounds(50,100,120,30);
+		add(label2);
+		
+		JLabel label3 = new JLabel("Todays Date");
+		label3.setBounds(50,50,120,30);
+		add(label3);
+		
+		JLabel label4 = new JLabel("Your Age");
+		label4.setBounds(50,200,120,30);
+		add(label4);
+		
+		JLabel label5 = new JLabel("Your Age in Months");
+		label5.setBounds(50,240,120,30);
+		add(label5);
+		
+		JLabel label6 = new JLabel("Your Age in weeks");
+		label6.setBounds(50,280,120,30);
+		add(label6);
+		
+		JLabel label7 = new JLabel("Your Age in Days");
+		label7.setBounds(50,320,120,30);
+		add(label7);
+		
+		JLabel label8 = new JLabel("Days Remaings For Your Next BirthDay");
+		label8.setBounds(70,360,250,30);
+		add(label8);
+		
+		
+		final JTextField d = new JTextField();		
+		d.setBounds(200,50,120,30);
+		d.setEditable(false);
+		add(d);
+		
+		final JTextField m = new JTextField();
+		m.setBounds(350,50,120,30);
+		m.setEditable(false);
+		add(m);
+		
+		final JTextField y = new JTextField();
+		y.setBounds(500,50,120,30);
+		y.setEditable(false);
+		add(y);
+		
+		final JTextField a1 = new JTextField();
+		a1.setBounds(200,200,300,30);
+		a1.setFont(font);
+		a1.setEditable(false);
+		add(a1);
+		
+		
+		final JTextField a2 = new JTextField();
+		a2.setBounds(200,240,300,30);
+		a2.setFont(font);
+		a2.setEditable(false);
+		add(a2);
+		
+		final JTextField a3 = new JTextField();
+		a3.setBounds(200,280,300,30);
+		a3.setFont(font);
+		a3.setEditable(false);
+		add(a3);
+		
+		final JTextField a4 = new JTextField();
+		a4.setBounds(200,320,300,30);
+		a4.setFont(font);
+		a4.setEditable(false);
+		add(a4);
+		
+		final JTextField a5 = new JTextField();
+		a5.setBounds(320,360,50,30);
+		a5.setFont(font);
+		a5.setEditable(false);
+		add(a5);
+		
+		JPanel northPanel = new JPanel();
+		JPanel southPanel = new JPanel();
+		southPanel.add(label1);
+	
+		
+		
+		
+
+		
+
+		
+		
+		final JComboBox combo1 = new JComboBox();
+		for (int j = 1; j<=31;j++)
+		{
+			combo1.addItem(j);
+		}
+		combo1.setBounds(200,100,120,30);
+		combo1.setEditable(false);
+		add(combo1);
+
+
+		final JComboBox combo2 = new JComboBox();
+		for (int i = 1; i<=12;i++)
+		{
+			combo2.addItem(i);
+		}
+		combo2.setBounds(350,100,120,30);
+		combo2.setEditable(false);
+		add(combo2);
+		
+		
+		
+		final JComboBox combo3 = new JComboBox();
+		for (int i = 1950; i<=2013;i++)
+			{
+				combo3.addItem(i);
+			}
+			
+		combo3.setEditable(false);
+		combo3.setBounds(500,100,120,30);
+		add(combo3);
+		
+		JButton button1 = new JButton("Go!!!!");
+		button1.setBounds(350,150,120,30);
+		add(button1);
+		add(northPanel);
+		add(southPanel);
+	
+		final Date d2 = new Date();
+		
+		int m1= d2.getMonth()+1;
+		int year =d2.getYear()+1900;
+		int d1= d2.getDate();
+		
+		final String f1= d1 + "" ;
+		final String f2=m1+"";
+		final String f3=year+"";
+		
+		d.setText(f1);
+		m.setText(f2);
+		y.setText(f3);
+		d.setFont(font);
+		m.setFont(font);
+		y.setFont(font);
+		
+
+		combo1.setFont(font);
+		combo2.setFont(font);
+		combo3.setFont(font);
+								
+								
+           
+
+		  
+		button1.addActionListener(new ActionListener()
+			{
+			
+				public  void actionPerformed(ActionEvent event)
+					{	
+		
+		              
+							 try{
+							 	long diffInMillisec=0;
+							long diffInMillisec1=0;
+							long diffInYear=0;
+							Calendar firstDate ;
+							Calendar secondDate;
+							Calendar firstDate1 ;
+							Calendar secondDate1;
+							Calendar firstDate2 ;
+							Calendar secondDate2;
+							Calendar firstDate3 ;
+							Calendar secondDate3;
+							// Create two calendars instances
+							firstDate = Calendar.getInstance();
+							secondDate = Calendar.getInstance();
+							firstDate1 = Calendar.getInstance();
+							secondDate1 = Calendar.getInstance();
+
+							firstDate2 = Calendar.getInstance();
+							secondDate2 = Calendar.getInstance();
+							firstDate3 = Calendar.getInstance();
+							secondDate3 = Calendar.getInstance();
+
+							String s1 = combo1.getSelectedItem().toString();
+							String s2 = combo2.getSelectedItem().toString();
+							String s3 = combo3.getSelectedItem().toString();
+
+							int s11 = Integer.parseInt(s1);
+							int s12 = Integer.parseInt(s2);
+							int s13 = Integer.parseInt(s3);
+
+							String t1 = d.getText();
+							String t2 = m.getText();
+							String t3 = y.getText();
+
+							int t11 = Integer.parseInt(t1);
+							int t12 = Integer.parseInt(t2);
+							int t13 = Integer.parseInt(t3);
+
+
+							//Set the dates
+							firstDate.set(t13, t12, t11);
+							secondDate.set(s13, s12, s11);
+
+							// Get the difference between two dates in milliseconds
+							diffInMillisec = firstDate.getTimeInMillis() - secondDate.getTimeInMillis();
+
+							// Get difference between two dates in days
+							long diffinmonth=0;
+							long diffinweek=0;
+							long diffindays=0;
+
+							long l1 =24 * 60 * 60 * 365;
+							long l2 =24 * 60 * 60 * 30;
+							long l3 =24 * 60 * 60 * 7;
+							long l4 =24 * 60 * 60 ;
+							diffInYear = (diffInMillisec/1000) / l1;
+
+							diffinmonth =  (diffInMillisec/1000)/l2;
+
+							diffinweek =  (diffInMillisec/1000)/l3;
+
+							diffindays =  (diffInMillisec/1000)/l4;
+
+							firstDate1.set(t13, t12, t11);
+							secondDate1.set(t13-1, s12, s11);
+
+							long diffinmonth1=0;
+
+
+
+							final	Date d2 = new Date();
+							int m1= d2.getMonth()+1;
+							int year =d2.getYear()+1900;
+							int d1= d2.getDate();
+							final	String f1= d1 + "" ;
+							final String f2=m1+"";
+							final String f3=year+"";
+
+							diffInMillisec1 = firstDate1.getTimeInMillis() - secondDate1.getTimeInMillis();
+							long l21 =24 * 60 * 60 * 30;
+							diffinmonth1 =  (diffInMillisec1/1000)/l21;
+
+							int x=year;
+
+							if(m1==s12)
+							x=x+0;
+							else
+							x=x+1;
+
+							long x1 =diffinmonth1;
+
+			
+							
+								if  (( x1 > 12) || (x1 == 12) )
+								{
+									x1 = x1 - 12;
+								}
+										
+
+
+
+							long diffInMillisec3=0;
+							if(d1==s11)
+							{
+							if(m1==s12)
+							{
+							JOptionPane.showMessageDialog(null,"Happy Birthday");
+							firstDate3.set(t13, s12, s11);
+							secondDate3.set(t13, t12, t11);
+
+							}
+							}
+							if(d1 < s11)
+							{
+							if(m1<s12)
+
+							{
+							firstDate3.set(t13, t12, t11);
+							secondDate3.set(t13, t12-1, s11);
+							}
+							}
+
+							if(d1 >s11)
+							{
+							if(m1 > s12)
+
+							{
+							firstDate3.set(t13, t12, t11);
+							secondDate3.set(t13, t12, s11);
+							}
+							}
+
+							if(s11 > d1)
+							{
+							if(s12 < m1)
+
+							{
+							firstDate3.set(t13, t12, t11);
+							secondDate3.set(t13, s12, s11);
+							diffInMillisec3 = firstDate3.getTimeInMillis() - secondDate3.getTimeInMillis();
+							long diffindays1=0;
+							long l41 =24 * 60 * 60 ;
+							diffindays1 =  (diffInMillisec3/1000)/l41;
+							long x2 = diffindays1 ;
+							if(x2 < 30)
+							{
+							firstDate3.set(t13, t12, t11);
+							secondDate3.set(t13, s12, s11);
+							}
+							else
+							{
+							firstDate3.set(t13, t12, t11);
+							secondDate3.set(t13, t12-1, s11);
+							}
+							}
+							}
+
+							if(s11 < d1)
+							{
+							if(s12 > m1 )
+
+							{
+							firstDate3.set(t13, t12, t11);
+							secondDate3.set(t13, t12, s11);
+							}
+							}
+
+							if(s11 < d1)
+							{
+							if(s12 ==  m1 )
+
+							{
+							firstDate3.set(t13, t12, t11);
+							secondDate3.set(t13, t12, s11);
+							}
+							}
+
+							if(s11 > d1)
+							{
+							if(s12 ==  m1 )
+
+							{
+							firstDate3.set(t13, t12, t11);
+							secondDate3.set(s13, s12, s11);
+							}
+							}
+
+
+
+
+							diffInMillisec3 = firstDate3.getTimeInMillis() - secondDate3.getTimeInMillis();
+							long diffindays1=0;
+							long l41 =24 * 60 * 60 ;
+							diffindays1 =  (diffInMillisec3/1000)/l41;
+							long x2 ;
+
+							x2=diffindays1;
+
+
+							if(m1>=s12)
+							{
+							firstDate2.set(t13+1, s12, s11);
+							secondDate2.set(t13, t12, t11);
+							}
+							else
+							{
+							firstDate2.set(t13, s12, s11);
+							secondDate2.set(t13, t12, t11);
+							}
+
+							String st="Happy Birthday";
+
+							long 	diffInMillisec2 = firstDate2.getTimeInMillis() - secondDate2.getTimeInMillis();
+							long l5 =24 * 60 * 60 ;
+							long	diffindays2 =  (diffInMillisec2/1000)/l5;
+							String df = diffInYear +"  Years  ,"+ x1 + "  Months  ,"+x2+"  days";
+
+							final String str1 = String.valueOf(diffInYear);
+							final String str2 = String.valueOf(diffinmonth);
+							final String str3 = String.valueOf(diffinweek);
+							final String str4 = String.valueOf(diffindays);
+							final String str5 = String.valueOf(diffindays2);
+
+
+
+
+							a1.setText(df);
+							a2.setText(str2);
+							a3.setText(str3);
+							a4.setText(str4);
+							a5.setText(str5);
+							               
+							}
+							catch(Exception ex)
+							{
+							            ex.printStackTrace();
+							} 
+
+							}});			
+}
+}
